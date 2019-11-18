@@ -1,0 +1,10 @@
+---
+- name: install
+  hosts: db
+  remote_user: vagrant
+
+  tasks:
+    - name: git
+      become: yes
+      apt: name=vim
+
