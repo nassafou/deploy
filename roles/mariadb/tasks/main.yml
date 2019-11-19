@@ -1,0 +1,53 @@
+---
+# tasks file for mariadb
+- name : "[MARIA] - apt-get update"
+  become: yes
+  apt:
+    update_cache: yes
+
+
+- name : "[MARIA] - install"
+  become: yes
+  apt:
+    name: "{{ maria_packages }}"
+
+- name : "[MARIA] - start service"
+  become: yes
+  service:
+    name: mariadb
+    state: started
+
+
+- name : "[MARIA] - install DB"
+  become: yes
+  mysql_db:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ maria_databases }}"
+
+- name: "[MARIA] - change my.cnf"
+  become: yes
+  lineinfile:
+    dest: "/etc/mysql/my.cnf"
+    line: "{{ item }}"
+  with_items:
+    - "[mysqld]"
+    - "bind-address  = 0.0.0.0"
+    - "# skip-networking"
+  notify: maria_restart
+
+- name: "[MARIA] - create user"
+  become: yes
+  mysql_user:
+    name: "{{ maria_user }}"
+    password: "{{ maria_pwd }}"
+    priv: "*.*:ALL"
+    host: "%"
+
+- name: "[MARIA] - restart"
+  become: yes
+  service:
+    name: mariadb
+    state: restarted
+    enabled: yes
+

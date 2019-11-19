@@ -1,0 +1,16 @@
+---
+# defaults file for mariadb
+maria_packages:
+  - software-properties-common
+  - mariadb-server
+  - mariadb-client
+  - python-mysqldb
+
+maria_databases:
+    - dbmaster
+    - dbworker1
+    - dbworker2
+
+maria_user: bob
+maria_pwd: gnulinux
+
