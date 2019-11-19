@@ -3,7 +3,7 @@
 - name: maria_restart
   become: yes
   service:
-    become: yes
+#    become: yes
     name: mariadb
     state: restarted
 

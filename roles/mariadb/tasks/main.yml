@@ -14,7 +14,7 @@
 - name : "[MARIA] - start service"
   become: yes
   service:
-    name: mariadb
+    name: mysql
     state: started
 
 
@@ -47,7 +47,7 @@
 - name: "[MARIA] - restart"
   become: yes
   service:
-    name: mariadb
+    name: mysql
     state: restarted
     enabled: yes
 
