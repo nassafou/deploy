@@ -1,8 +1,7 @@
 ---
-- name: install
+- name: "install mariadb"
   hosts: db
   remote_user: vagrant
-
   roles:
      - mariadb
       
