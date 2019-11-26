@@ -1,0 +1,8 @@
+# cron collect déployé par ansible
+
+* * * * * root /opt/collect/collectnew.sh
+
+# si tous les jours
+
+#00 22 * * * root /opt/collect/collectnew.sh
+
