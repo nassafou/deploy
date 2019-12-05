@@ -1,0 +1,8 @@
+# cron collect déployé par ansible
+
+* * * * * vagrant /opt/collect/collect.sh
+
+# si tous les jours
+
+#00 22 * * * root /opt/collect/collect.sh
+

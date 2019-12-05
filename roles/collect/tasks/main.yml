@@ -1,0 +1,23 @@
+---
+# tasks file for roles/collect
+- name: "[COLLECT] - create directory"
+  become: yes
+  file:
+    path: /opt/collect/
+    state: directory
+    mode: 0755
+
+- name: "[COLLECT] - create directory"
+  become: yes
+  copy:
+    src: collect.sh
+    dest: /opt/collect/collect.sh
+    mode: 0755
+
+- name: "[COLLECT] - cron"
+  become: yes
+  copy:
+    src: cron_collect
+    dest: /etc/cron.d/cron_collect
+  notify: cron_restart
+

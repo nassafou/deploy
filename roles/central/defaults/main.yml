@@ -1,0 +1,16 @@
+---
+# defaults file for roles/central
+
+maria_packages:
+  - software-properties-common
+  - mariadb-server
+  - mariadb-client
+  - python-mysqldb
+  - python-flask
+
+maria_databases:
+    - collect
+
+maria_user: bob
+maria_pwd: gnulinux
+

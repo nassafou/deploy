@@ -1,0 +1,8 @@
+---
+# handlers file for roles/central
+- name: maria_restart
+  become: yes
+  service:
+    name: mariadb
+    state: restarted
+
